@@ -1,21 +1,18 @@
-import HomeCard from "./HomeCard"
+import HomeCard from "./HomeCard";
 
-const CardContainer = () => {
+const CardContainer = ({ products }) => { // Destructure props properly
   return (
     <section className="py-5" id="shop">
-        <h4 style={{ textAlign: "center" }}>Our Products</h4>
-        <div className="container px-4 px-lg-5 mt-5">
-            <div className="row justify-content-center">
-                <HomeCard />
-                <HomeCard />
-                <HomeCard />
-                <HomeCard />
-                <HomeCard />
-                <HomeCard />
-            </div>
+      <h4 style={{ textAlign: "center" }}>Our Products</h4>
+      <div className="container px-4 px-lg-5 mt-5">
+        <div className="row justify-content-center">
+          {products.map(product => (
+            <HomeCard key={product.id} product={product} />
+          ))}
         </div>
+      </div>
     </section>
-  )
-}
+  );
+};
 
-export default CardContainer
+export default CardContainer;
